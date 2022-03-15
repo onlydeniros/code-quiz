@@ -9,10 +9,15 @@
     padding-top: 40px;
 }
 
+.start-game{
+    margin: 14px;
+}
+
 
 .quiz-section{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 10%;
@@ -23,5 +28,6 @@
 
 .quiz-section h1{
     margin-bottom: 15px;
-    font-size: 35px;
+    font-size: 39px;
+
 }
