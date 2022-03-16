@@ -48,12 +48,28 @@ var questions = [
             'Quotes',
             'Paraenthesis'
         ],
-        correctAnswer: 'All of the above'
+        correctAnswer: 'Quotes'
     }
 ]
 var questionIndex = 0;
 var ul = document.querySelector('.choices')
 var newli = document.createElement('li')
+
+var count = 60;
+var countDown = setInterval(myTimer, 1000);
+
+function myTimer() {
+    var timer = document.querySelector('.timer')
+    timer.textContent = count;
+    count--;
+    if (count === -2) {
+        timer.textContent = "";
+        clearInterval(countDown)
+        alert('Time is Up')
+        quizOver();
+    }
+}
+
 
 startGameBtn.addEventListener("click", function () {
     document.querySelector('#start-quiz').style.display = "none"
@@ -82,7 +98,9 @@ var qClick = function () {
     if (this.value === questions[questionIndex].correctAnswer) {
         console.log("Correct")
     } else {
-        console.log("Wrong")
+        count -= 10
+        return
+
     }
     questionIndex++
 
@@ -95,9 +113,17 @@ var qClick = function () {
 }
 
 var quizOver = function () {
+    var endGame = document.querySelector('.end-quiz')
+    endGame.id = "block"
+    endGame.className = "quiz-section"
+    document.querySelector('.new-question').style.display = 'none'
+
+    if (count === 0) {
+        clearInterval(countDown)
+    }
 
 }
 
 // 'The conditon in an if/else statment is enclosed with', 'A very useful tool used during development and debugging for printing content to the debugger is:', 'String values must be enclosed within___ when being assigned to variables'
 
-// time reaming as score
+// time reaming as scor

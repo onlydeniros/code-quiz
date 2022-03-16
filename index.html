@@ -12,7 +12,7 @@
 <body>
     <header class="high-timer">
         <div class="highscore">View High Score</div>
-        <div class="timer">Time:</div>
+        <div>Timer:<span class="timer"></span></div>
     </header>
     <main>
         <section class="quiz-section" id="start-quiz">
@@ -29,8 +29,13 @@
             <ul class="choices" id="choices"></ul>
         </section>
 
-        <section>
-            <!-- Game over  -->
+        <section class="end-quiz" id="hidden">
+            <h2>Quiz Over!</h2>
+            <p>Your final score is <span id="game-score"></span></p>
+            <p>
+                Enter Your Initials: <input type="text" id="initials">
+                <button class="submit">Submit</button>
+            </p>
         </section>
     </main>
 
