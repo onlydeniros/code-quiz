@@ -55,9 +55,18 @@ var questionIndex = 0;
 var ul = document.querySelector('.choices')
 var newli = document.createElement('li')
 
-var count = 60;
-var countDown = setInterval(myTimer, 1000);
 
+function inputValue() {
+    var input = document.querySelector('input[type="text"]').value;
+    document.querySelector("#value").textContent = input
+    document.getElementById('value').innerHTML = playerScore +  input;
+}
+
+
+
+
+
+var count = 60;
 function myTimer() {
     var timer = document.querySelector('.timer')
     timer.textContent = count;
@@ -67,15 +76,23 @@ function myTimer() {
         clearInterval(countDown)
         alert('Time is Up')
         quizOver();
+    } else {
+        if (count == 0) {
+            document.querySelector('#start-quiz').style.display = "none"
+        }
+
     }
 }
+var countDown = setInterval(myTimer, 1000);
 
-
-startGameBtn.addEventListener("click", function () {
-    document.querySelector('#start-quiz').style.display = "none"
-    document.querySelector('.new-question').style.display = "block"
-    newQuestion1();
-})
+var startQuiz = function () {
+    startGameBtn.addEventListener("click", function () {
+        document.querySelector('#start-quiz').style.display = "none"
+        document.querySelector('.new-question').style.display = "block"
+        newQuestion1();
+    })
+}
+startQuiz();
 
 var newQuestion1 = function () {
     var ques1 = document.querySelector('.question');
@@ -88,17 +105,26 @@ var newQuestion1 = function () {
         var btn = document.createElement('button');
         btn.textContent = answer;
         btn.setAttribute("value", answer)
+        btn.setAttribute("class", "codecode")
         btn.addEventListener("click", qClick)
         choices.append(btn)
     })
 
 }
-
+var playerScore = 0;
 var qClick = function () {
+
     if (this.value === questions[questionIndex].correctAnswer) {
+        playerScore += count
+        console.log(playerScore)
         console.log("Correct")
     } else {
-        count -= 10
+        if (count < 10) {
+            clearInterval(myTimer)
+            count = 0
+        } else {
+            count -= 10
+        }
         return
 
     }

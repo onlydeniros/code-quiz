@@ -1,5 +1,12 @@
 *{
     margin: 0 auto;
+    background-color: black;
+    color: white;
+}
+
+input{
+    background-color: white;
+    color: black;
 }
 
 .high-timer{
@@ -35,3 +42,12 @@
 #hidden{
     display: none;
 }
+.choices .codecode{
+    display: block;
+    width: 50%;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: blue;
+    font-size: 20px;
+}
+
